@@ -4,7 +4,7 @@
        style="max-width: 100%; border: 0;">
 </a>
 
-We invite you to explore our [blog](https://crawlbase.com/blog/build-a-search-engine-tool-with-smart-ai-proxy/?utm_source=github&utm_medium=referral&utm_campaign=scraperhub&ref=gh_scraperhub) for more details.
+We invite you to explore our [blog](https://crawlbase.com/blog/how-to-build-search-engine-tool/?utm_source=github&utm_medium=referral&utm_campaign=scraperhub&ref=gh_scraperhub) for more details.
 
 # SERP Fetcher Example (Crawlbase Smart AI Proxy)
 
