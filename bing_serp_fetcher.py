@@ -74,7 +74,7 @@ def fetch_bing_serp(crawlbase_token: str, query: str) -> dict:
     """
     Fetch Bing SERP for the given query using Smart AI Proxy (no autoparse).
     Returns a dict in the same format as the Google fetcher's autoparse output:
-    { "original_status", "pc_status", "url", "body": { "ads", "peopleAlsoAsk", "snackPack", "searchResults" } }
+    { "original_status", "cb_status", "url", "body": { "ads", "peopleAlsoAsk", "snackPack", "searchResults" } }
 
     Args:
         crawlbase_token: Crawlbase Smart AI Proxy token.
@@ -100,7 +100,7 @@ def fetch_bing_serp(crawlbase_token: str, query: str) -> dict:
     body = _parse_bing_html(html, url)
     return {
         "original_status": response.status_code,
-        "pc_status": response.status_code,
+        "cb_status": response.status_code,
         "url": url,
         "body": body,
     }

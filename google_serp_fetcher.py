@@ -19,7 +19,7 @@ def fetch_google_serp(crawlbase_token: str, query: str) -> dict:
     Fetch Google SERP for the given query using Crawlbase Smart AI Proxy.
 
     Uses autoparse=true; response is JSON. Returns the parsed dict as returned
-    by Crawlbase (original_status, pc_status, url, body). For a normalized
+    by Crawlbase (original_status, cb_status, url, body). For a normalized
     shape shared with Bing, use serp_fetcher.fetch_serp(..., engine="google").
     """
     proxy_https = f"https://{crawlbase_token}:@smartproxy.crawlbase.com:8013"

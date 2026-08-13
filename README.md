@@ -54,7 +54,7 @@ python serp_fetcher.py bing         # Bing
 
 - Single entry point: **`fetch_serp(query, engine="google")`**.
 - **Parameters:** `query`, `engine` (`"google"` or `"bing"`). No country parameter (geo not allowed on free tier).
-- Returns a **normalized dict** with `original_status=200`, `pc_status=200`, `url`, and `body` (`searchResults`, `ads`, `peopleAlsoAsk`, `snackPack`) so both engines share the same property names. **Raises `RuntimeError`** if the request returns a non-200 status.
+- Returns a **normalized dict** with `original_status=200`, `cb_status=200`, `url`, and `body` (`searchResults`, `ads`, `peopleAlsoAsk`, `snackPack`) so both engines share the same property names. **Raises `RuntimeError`** if the request returns a non-200 status.
 
 ## Docs
 

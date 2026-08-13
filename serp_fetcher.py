@@ -59,14 +59,14 @@ def _normalize_serp_response(raw: dict) -> dict:
     """
     Normalize engine response to a single uniform shape.
 
-    Raises RuntimeError if original_status or pc_status is not 200.
+    Raises RuntimeError if original_status or cb_status is not 200.
     Ensures body has ads, peopleAlsoAsk, snackPack, searchResults with canonical keys per item.
     """
     orig = int(raw.get("original_status", 0))
-    pc = int(raw.get("pc_status", 0))
+    pc = int(raw.get("cb_status", 0))
     if orig != 200 or pc != 200:
         raise RuntimeError(
-            f"SERP request failed: original_status={orig}, pc_status={pc} (expected 200). url={raw.get('url', '')}"
+            f"SERP request failed: original_status={orig}, cb_status={pc} (expected 200). url={raw.get('url', '')}"
         )
     body = raw.get("body")
     if not isinstance(body, dict):
@@ -77,7 +77,7 @@ def _normalize_serp_response(raw: dict) -> dict:
     search_results = list(body.get("searchResults") or [])
     return {
         "original_status": 200,
-        "pc_status": 200,
+        "cb_status": 200,
         "url": str(raw.get("url", "") or ""),
         "body": {
             "ads": [_normalize_ad(a) for a in ads],
@@ -92,16 +92,16 @@ def fetch_serp(query: str, engine: str = "google") -> dict:
     """
     Fetch SERP from the given search engine using Crawlbase Smart AI Proxy.
 
-    Returns a normalized dict: original_status=200, pc_status=200, url, and body with
+    Returns a normalized dict: original_status=200, cb_status=200, url, and body with
     ads, peopleAlsoAsk, snackPack, searchResults (each item has uniform keys).
-    Raises RuntimeError if original_status or pc_status is not 200.
+    Raises RuntimeError if original_status or cb_status is not 200.
 
     Args:
         query: Search query string.
         engine: Search engine to use: "google" (JSON via autoparse) or "bing" (HTML parsed to same format).
 
     Returns:
-        Dict with original_status=200, pc_status=200, url, and body (searchResults, ads, etc.).
+        Dict with original_status=200, cb_status=200, url, and body (searchResults, ads, etc.).
     """
     engine = (engine or "google").strip().lower()
     if engine not in ("google", "bing"):
